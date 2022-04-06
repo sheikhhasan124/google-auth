@@ -5,14 +5,26 @@ import app from './firebase.init';
 const auth = getAuth(app)
 
 const App = () => {
+    // const provider = new GoogleAuthProvider()
+
+    // const handlegoogleSignIn = () =>{
+    //     signInWithPopup(auth, provider)
+    //     .then(result=>{
+    //         const user = result.user;
+    //         console.log(user)
+
+    //     })
+    //     .catch(error=>{
+    //         console.log(error)
+    //     })
+    // }
     const provider = new GoogleAuthProvider()
 
     const handlegoogleSignIn = () =>{
         signInWithPopup(auth, provider)
         .then(result=>{
             const user = result.user;
-            console.log(user)
-
+            console.log(user);
         })
         .catch(error=>{
             console.log(error)
@@ -21,7 +33,7 @@ const App = () => {
 
     return (
         <div>
-            <button onClick={handlegoogleSignIn}>log in</button>
+            <button onClick={handlegoogleSignIn}>google log in</button>
         </div>
     );
 };
