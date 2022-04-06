@@ -32,8 +32,9 @@ const App = () => {
 
     return (
         <div>
-            <button onClick={handlegoogleSignIn}>google log in</button>
-            <button onClick={handleSignOut}>google sign out</button>
+            {user.email? <button onClick={handleSignOut}>google sign out</button>: <button onClick={handlegoogleSignIn}>google log in</button> }
+           
+            
             <h2>name:{user.displayName}</h2>
             <img src={user.photoURL} alt="" />
             <p>email:{user.email}</p>
