@@ -1,3 +1,11 @@
+## react fire base authentication  
+- log in - already user 
+- resister  first time then resister    
+- sign in - already user  
+- sign up first time then resister 
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

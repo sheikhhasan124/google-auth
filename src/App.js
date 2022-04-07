@@ -36,6 +36,7 @@ const App = () => {
          .then(result=>{
              const user = result.user;
              console.log(user)
+             setUser(user)
          })
          .catch(error=>{
              console.log(error)
@@ -44,7 +45,7 @@ const App = () => {
 
     return (
         <div>
-            {user.email? <button onClick={handleSignOut}>google sign out</button>:
+            {user.uid? <button onClick={handleSignOut}>google sign out</button>:
             <div>
                  <button onClick={handlegoogleSignIn}>google log in</button>
                  <button onClick={handlegithubSignIn}>git hub signin</button>
