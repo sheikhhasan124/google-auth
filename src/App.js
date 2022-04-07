@@ -56,6 +56,13 @@ const App = () => {
             <h2>name:{user.displayName}</h2>
             <img src={user.photoURL} alt="" />
             <p>email:{user.email}</p>
+
+
+
+            <form>
+                <input type="text" />
+                <input type="password" name="" id="" />
+            </form>
         </div>
     );
 };
