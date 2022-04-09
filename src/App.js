@@ -10,6 +10,7 @@ const auth = getAuth(app)
 
 const App = () => {
 //    auth by form email password 
+const [validated, setValidated] = useState(false);
 const [email, setEmail]= useState('')
 const [password, setPassword] = useState('')
 
@@ -58,7 +59,16 @@ const handleEmailBlure = (e) =>{
 const handlePasswordBlure = (e) =>{
     setPassword(e.target.value)
 }
-const handleFormSubmit = (e) =>{
+const handleFormSubmit = (event) =>{
+
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+
    createUserWithEmailAndPassword(auth, email, password)
    .then(result=>{
        const user = result.user;
@@ -69,7 +79,7 @@ const handleFormSubmit = (e) =>{
    })
 
 
-    e.preventDefault()
+    event.preventDefault()
 }
     return (
     //    auth by google 
@@ -90,22 +100,26 @@ const handleFormSubmit = (e) =>{
 {/* auth by input email password form */}
     <div className="resistration w-50 mx-auto">
         <h2 className="text-primary">plese resister</h2>
-    <Form onSubmit={handleFormSubmit}>
+    <Form noValidate validated={validated}  onSubmit={handleFormSubmit}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control onBlur={handleEmailBlure} type="email" placeholder="Enter email" />
+    <Form.Control onBlur={handleEmailBlure} type="email" placeholder="Enter email" required/>
     <Form.Text className="text-muted">
       We'll never share your email with anyone else.
     </Form.Text>
+    <Form.Control.Feedback type="invalid">
+            Please provide a valid email.
+    </Form.Control.Feedback>
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control  onBlur={handlePasswordBlure} type="password" placeholder="Password" />
+    <Form.Control  onBlur={handlePasswordBlure} type="password" placeholder="Password" required/>
+    <Form.Control.Feedback type="invalid">
+            Please provide a valid password.
+    </Form.Control.Feedback>
   </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
+  
   <Button variant="primary" type="submit">
     Submit
   </Button>
